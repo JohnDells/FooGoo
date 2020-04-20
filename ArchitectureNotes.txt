@@ -1,3 +1,5 @@
+GitHub:  https://github.com/JohnDells/FooGoo
+
 Controllers
 	Purpose:	Provide an REST/HTTP interface to the FooManager.
 	Goal:		Should be as lightweight as possible, with no logic whatsoever.
