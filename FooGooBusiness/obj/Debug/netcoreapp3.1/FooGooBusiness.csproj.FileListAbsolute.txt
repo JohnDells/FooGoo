@@ -1,0 +1,9 @@
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\bin\Debug\netcoreapp3.1\FooGooBusiness.deps.json
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\bin\Debug\netcoreapp3.1\FooGooBusiness.dll
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\bin\Debug\netcoreapp3.1\FooGooBusiness.pdb
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.AssemblyInfoInputs.cache
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.AssemblyInfo.cs
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.dll
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.pdb
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.csprojAssemblyReference.cache
+D:\Users\johnd\source\repos\FooGoo\FooGooBusiness\obj\Debug\netcoreapp3.1\FooGooBusiness.csproj.CoreCompileInputs.cache

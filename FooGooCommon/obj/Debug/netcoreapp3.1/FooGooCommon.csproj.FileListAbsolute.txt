@@ -1,0 +1,9 @@
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\bin\Debug\netcoreapp3.1\FooGooCommon.deps.json
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\bin\Debug\netcoreapp3.1\FooGooCommon.dll
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\bin\Debug\netcoreapp3.1\FooGooCommon.pdb
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.csproj.CoreCompileInputs.cache
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.AssemblyInfoInputs.cache
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.AssemblyInfo.cs
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.dll
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.pdb
+D:\Users\johnd\source\repos\FooGoo\FooGooCommon\obj\Debug\netcoreapp3.1\FooGooCommon.csprojAssemblyReference.cache

@@ -1,0 +1,24 @@
+Controllers
+	Purpose:	Provide an REST/HTTP interface to the FooManager.
+	Goal:		Should be as lightweight as possible, with no logic whatsoever.
+
+Managers
+	Purpose:	To provide orchestration and business logic.
+					These tend towards the facade pattern for simple CRUD operations.
+
+Repositories:
+	Purpose:	To provide an interface to data stores.
+	Goal:		Should be able to be swapped out without impace to the application.
+	Interface:  Should have nothing specific to any implementation.
+
+Data Structure:
+	Foo:		This is the root "thing".
+	FooType:	This is a lookup parent to Foo and is intended to have a limited number of values.
+	Bar:		This is a child of "Foo", with a one to many relationship to it's parent.
+					Usually nothing is ever done to these records outside the context of it's parent foo.
+	Baz:		This is a sibling of "Foo", with a many to many relationship.
+	Goo:		This is a relationship between two Foos "nodes" - representing the "edge" in a graph implementation.
+
+
+
+	
