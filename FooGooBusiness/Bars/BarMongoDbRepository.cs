@@ -44,5 +44,13 @@ namespace FooGooBusiness.Bars
                 await _collection.UpdateOneAsync(session, Builders<Bar>.Filter.Eq((x) => x.BarId, id), Builders<Bar>.Update.Set((x) => x.Name, name));
             }
         }
+
+        public async Task DeactivateBar(Guid id)
+        {
+            using (var session = await _client.StartSessionAsync())
+            {
+                await _collection.UpdateOneAsync(session, Builders<Bar>.Filter.Eq((x) => x.BarId, id), Builders<Bar>.Update.Set((x) => x.Active, false));
+            }
+        }
     }
 }

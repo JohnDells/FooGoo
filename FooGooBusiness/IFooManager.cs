@@ -34,5 +34,7 @@ namespace FooGooBusiness
         Task InsertBar(Guid fooId, string name);
 
         Task UpdateBarName(Guid id, string name);
+
+        Task DeactivateBar(Guid id);
     }
 }
