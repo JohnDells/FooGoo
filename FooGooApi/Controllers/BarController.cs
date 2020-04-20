@@ -18,13 +18,9 @@ namespace FooGooApi.Controllers
         private readonly IFooManager _manager;
         private readonly ILogger<FooTypeController> _logger;
 
-        public BarController(ILogger<FooTypeController> logger, IConfiguration configuration)
+        public BarController(IFooManager manager, ILogger<FooTypeController> logger, IConfiguration configuration)
         {
-            var connectionString = configuration["ConnectionStrings:MongoDbDefault"];
-            var fooRepository = new FooMongoDbRepository(connectionString);
-            var fooTypeRepository = new FooTypeMongoDbRepository(connectionString);
-            var barRepository = new BarMongoDbRepository(connectionString);
-            _manager = new FooManager(fooRepository, fooTypeRepository, barRepository);
+            _manager = manager;
             _logger = logger;
         }
 
@@ -47,6 +43,13 @@ namespace FooGooApi.Controllers
         public async Task UpdateName(Guid id, string name)
         {
             await _manager.UpdateBarName(id, name);
+        }
+
+        [HttpPut]
+        [Route("api/foos/{fooId}/bars/{id}/deactivate")]
+        public async Task Deactivate(Guid id)
+        {
+            await _manager.DeactivateBar(id);
         }
     }
 }

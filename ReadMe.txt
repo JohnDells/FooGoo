@@ -1,7 +1,5 @@
 TODO:
 
-1.  Implement "Bar" = child of "Foo"
-2.  Implement "Baz" = sibling of "Baz"
 1.  Implement autoFac
 1.  Implement DTO's.
 2.  Implement secrets
@@ -16,6 +14,8 @@ TODO:
 7.  Implement UI - Angular
 8.  Implement UI - React
 9.  Implement UI - Vue
+2.  Implement "Baz" = sibling of "Foo"
+1.  Implement "Goo" = graph of "Foo"
 
 
 

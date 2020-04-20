@@ -1,3 +1,4 @@
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,12 @@ namespace FooGooApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FooGooApi", Version = "v1" });
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
+            builder.RegisterModule(new MongoDbApplicationModule(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

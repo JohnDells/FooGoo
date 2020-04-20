@@ -17,13 +17,9 @@ namespace FooGooApi.Controllers
         private readonly IFooManager _manager;
         private readonly ILogger<FooController> _logger;
 
-        public FooController(ILogger<FooController> logger, IConfiguration configuration)
+        public FooController(IFooManager manager, ILogger<FooController> logger, IConfiguration configuration)
         {
-            var connectionString = configuration["ConnectionStrings:MongoDbDefault"];
-            var fooRepository = new FooMongoDbRepository(connectionString);
-            var fooTypeRepository = new FooTypeMongoDbRepository(connectionString);
-            var barRepository = new BarMongoDbRepository(connectionString);
-            _manager = new FooManager(fooRepository, fooTypeRepository, barRepository);
+            _manager = manager;
             _logger = logger;
         }
 

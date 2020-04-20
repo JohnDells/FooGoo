@@ -85,5 +85,9 @@ namespace FooGooBusiness
             await _barRepository.UpdateBarName(id, name);
         }
 
+        public async Task DeactivateBar(Guid id)
+        {
+            await _barRepository.DeactivateBar(id);
+        }
     }
 }
