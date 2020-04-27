@@ -33,11 +33,11 @@ namespace FooGooApi
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            //var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
-            //builder.RegisterModule(new MongoDbApplicationModule(connectionString));
+            var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
+            builder.RegisterModule(new MongoDbApplicationModule(connectionString));
 
-            var connectionString = Configuration["ConnectionStrings:EfDefault"];
-            builder.RegisterModule(new EfApplicationModule(connectionString));
+            //var connectionString = Configuration["ConnectionStrings:EfDefault"];
+            //builder.RegisterModule(new EfApplicationModule(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,15 +9,13 @@ namespace FooGooBusiness.Ef
 {
     public class FooTypeEfRepository : DbContext, IFooTypeRepository
     {
-        private readonly string _connectionString;
+        private readonly IFooGooDbContext _context;
         private readonly IMapper _mapper;
-        private readonly FooGooContext _context;
 
-        public FooTypeEfRepository(string connectionString, IMapper mapper)
+        public FooTypeEfRepository(IFooGooDbContext context, IMapper mapper)
         {
-            _connectionString = connectionString;
+            _context = context;
             _mapper = mapper;
-            _context = new FooGooContext(_connectionString);
         }
 
         public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
@@ -27,11 +25,10 @@ namespace FooGooBusiness.Ef
             return result;
         }
 
-        public async Task InsertFooType(string name)
+        public async Task InsertFooType(FooTypeDto item)
         {
-            var item = new FooTypeEntity { FooTypeId = Guid.NewGuid(), Name = name, Active = true };
-
-            _context.FooTypes.Add(item);
+            var entity = _mapper.Map<FooTypeEntity>(item);
+            _context.FooTypes.Add(entity);
             await _context.SaveChangesAsync();
         }
 

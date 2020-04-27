@@ -8,18 +8,17 @@ namespace FooGooBusiness.MongoDb
 {
     public class BarMongoDbRepository : IBarRepository
     {
-        private readonly string _databaseName = "FooGoo";
-        private readonly string _collectionName = "Bars";
-        private readonly string _connectionString;
         private readonly IMongoClient _client;
-        private readonly IMongoDatabase _database;
-        private readonly IMongoCollection<BarDoc> _collection;
         private readonly IMapper _mapper;
 
-        public BarMongoDbRepository(string connectionString, IMapper mapper)
+        private readonly string _databaseName = MongoDbConstants.DatabaseName;
+        private readonly string _collectionName = MongoDbConstants.BarCollection;
+        private readonly IMongoDatabase _database;
+        private readonly IMongoCollection<BarDoc> _collection;
+
+        public BarMongoDbRepository(IMongoClient client, IMapper mapper)
         {
-            _connectionString = connectionString;
-            _client = new MongoClient(_connectionString);
+            _client = client;
             _database = _client.GetDatabase(_databaseName);
             _collection = _database.GetCollection<BarDoc>(_collectionName);
             _mapper = mapper;
@@ -32,13 +31,12 @@ namespace FooGooBusiness.MongoDb
             return result;
         }
 
-        public async Task InsertBar(Guid fooId, string name)
+        public async Task InsertBar(BarDto item)
         {
-            var item = new BarDoc() { BarId = Guid.NewGuid(), FooId = fooId, Name = name, Active = true };
-
+            var doc = _mapper.Map<BarDoc>(item);
             using (var session = await _client.StartSessionAsync())
             {
-                await _collection.InsertOneAsync(session, item);
+                await _collection.InsertOneAsync(session, doc);
             }
         }
 

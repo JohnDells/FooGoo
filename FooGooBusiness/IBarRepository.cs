@@ -8,7 +8,7 @@ namespace FooGooBusiness
     {
         Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId);
 
-        Task InsertBar(Guid fooId, string name);
+        Task InsertBar(BarDto item);
 
         Task UpdateBarName(Guid id, string name);
 

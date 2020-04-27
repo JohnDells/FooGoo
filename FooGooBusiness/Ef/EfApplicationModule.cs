@@ -3,6 +3,9 @@ using AutoMapper;
 
 namespace FooGooBusiness.Ef
 {
+    /// <summary>
+    /// Configures EF context and the DTO/Entity mapping for each repository.
+    /// </summary>
     public class EfApplicationModule : Module
     {
         private readonly string _connectionString;
@@ -14,11 +17,12 @@ namespace FooGooBusiness.Ef
 
         protected override void Load(ContainerBuilder builder)
         {
+            var context = new FooGooContext(_connectionString);
             var mapper = GetMapper();
 
-            builder.Register(c => new FooTypeEfRepository(_connectionString, mapper)).As<IFooTypeRepository>();
-            builder.Register(c => new FooEfRepository(_connectionString, mapper)).As<IFooRespository>();
-            builder.Register(c => new BarEfRepository(_connectionString, mapper)).As<IBarRepository>();
+            builder.Register(c => new FooTypeEfRepository(context, mapper)).As<IFooTypeRepository>();
+            builder.Register(c => new FooEfRepository(context, mapper)).As<IFooRespository>();
+            builder.Register(c => new BarEfRepository(context, mapper)).As<IBarRepository>();
 
             builder.RegisterType<FooManager>().As<IFooManager>();
 
@@ -30,8 +34,11 @@ namespace FooGooBusiness.Ef
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<FooEntity, FooDto>();
+                cfg.CreateMap<FooDto, FooEntity>();
                 cfg.CreateMap<FooTypeEntity, FooTypeDto>();
+                cfg.CreateMap<FooTypeDto, FooTypeEntity>();
                 cfg.CreateMap<BarEntity, BarDto>();
+                cfg.CreateMap<BarDto, BarEntity>();
             });
 
             var mapper = config.CreateMapper();

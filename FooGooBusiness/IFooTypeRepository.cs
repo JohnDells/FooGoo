@@ -8,7 +8,7 @@ namespace FooGooBusiness
     {
         Task<List<FooTypeDto>> GetAllActiveFooTypes();
 
-        Task InsertFooType(string name);
+        Task InsertFooType(FooTypeDto item);
 
         Task UpdateFooTypeName(Guid id, string name);
     }

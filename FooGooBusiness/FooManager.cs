@@ -34,7 +34,7 @@ namespace FooGooBusiness
 
         public async Task InsertFoo(FooDto item)
         {
-            await _fooRepository.InsertFoo(item.FooTypeId, item.Name);
+            await _fooRepository.InsertFoo(item);
         }
 
         public async Task UpdateFooName(Guid id, string name)
@@ -59,7 +59,7 @@ namespace FooGooBusiness
 
         public async Task InsertFooType(FooTypeDto item)
         {
-            await _fooTypeRepository.InsertFooType(item.Name);
+            await _fooTypeRepository.InsertFooType(item);
         }
 
         public async Task UpdateFooTypeName(Guid id, string name)
@@ -74,7 +74,7 @@ namespace FooGooBusiness
 
         public async Task InsertBar(BarDto item)
         {
-            await _barRepository.InsertBar(item.FooId, item.Name);
+            await _barRepository.InsertBar(item);
         }
 
         public async Task UpdateBarName(Guid id, string name)

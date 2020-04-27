@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using AutoMapper;
+using MongoDB.Driver;
 
 namespace FooGooBusiness.MongoDb
 {
@@ -14,11 +15,12 @@ namespace FooGooBusiness.MongoDb
 
         protected override void Load(ContainerBuilder builder)
         {
+            var client = new MongoClient(_connectionString);
             var mapper = GetMapper();
 
-            builder.Register(c => new FooTypeMongoDbRepository(_connectionString, mapper)).As<IFooTypeRepository>();
-            builder.Register(c => new FooMongoDbRepository(_connectionString, mapper)).As<IFooRespository>();
-            builder.Register(c => new BarMongoDbRepository(_connectionString, mapper)).As<IBarRepository>();
+            builder.Register(c => new FooTypeMongoDbRepository(client, mapper)).As<IFooTypeRepository>();
+            builder.Register(c => new FooMongoDbRepository(client, mapper)).As<IFooRespository>();
+            builder.Register(c => new BarMongoDbRepository(client, mapper)).As<IBarRepository>();
 
             builder.RegisterType<FooManager>().As<IFooManager>();
 
@@ -30,8 +32,11 @@ namespace FooGooBusiness.MongoDb
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<FooDoc, FooDto>();
+                cfg.CreateMap<FooDto, FooDoc>();
                 cfg.CreateMap<FooTypeDoc, FooTypeDto>();
+                cfg.CreateMap<FooTypeDto, FooTypeDoc>();
                 cfg.CreateMap<BarDoc, BarDto>();
+                cfg.CreateMap<BarDto, BarDoc>();
             });
 
             var mapper = config.CreateMapper();

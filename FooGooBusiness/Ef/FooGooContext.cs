@@ -2,7 +2,7 @@
 
 namespace FooGooBusiness.Ef
 {
-    public class FooGooContext : DbContext
+    public class FooGooContext : DbContext, IFooGooDbContext
     {
         private readonly string _connectionString;
 

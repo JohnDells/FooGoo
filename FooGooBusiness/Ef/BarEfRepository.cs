@@ -9,15 +9,13 @@ namespace FooGooBusiness.Ef
 {
     public class BarEfRepository : IBarRepository
     {
-        private readonly string _connectionString;
+        private readonly IFooGooDbContext _context;
         private readonly IMapper _mapper;
-        private readonly FooGooContext _context;
 
-        public BarEfRepository(string connectionString, IMapper mapper)
+        public BarEfRepository(IFooGooDbContext context, IMapper mapper)
         {
-            _connectionString = connectionString;
+            _context = context;
             _mapper = mapper;
-            _context = new FooGooContext(_connectionString);
         }
 
         public async Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
@@ -27,11 +25,10 @@ namespace FooGooBusiness.Ef
             return result;
         }
 
-        public async Task InsertBar(Guid fooId, string name)
+        public async Task InsertBar(BarDto item)
         {
-            var item = new BarEntity { BarId = Guid.NewGuid(), FooId = fooId, Name = name, Active = true };
-
-            _context.Bars.Add(item);
+            var entity = _mapper.Map<BarEntity>(item);
+            _context.Bars.Add(entity);
             await _context.SaveChangesAsync();
         }
 

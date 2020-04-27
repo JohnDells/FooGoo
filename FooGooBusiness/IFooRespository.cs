@@ -12,7 +12,7 @@ namespace FooGooBusiness
 
         Task<FooDto> GetFoo(Guid id);
 
-        Task InsertFoo(Guid fooTypeId, string name);
+        Task InsertFoo(FooDto item);
 
         Task UpdateFooName(Guid id, string name);
 
