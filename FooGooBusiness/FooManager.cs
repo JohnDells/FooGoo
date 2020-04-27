@@ -1,7 +1,4 @@
-﻿using FooGooBusiness.Bars;
-using FooGooBusiness.Foos;
-using FooGooBusiness.FooTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,24 +17,24 @@ namespace FooGooBusiness
             _barRepository = barRepository;
         }
 
-        public async Task<List<Foo>> GetAllActiveFoos()
+        public async Task<List<FooDto>> GetAllActiveFoos()
         {
             return await _fooRepository.GetAllActiveFoos();
         }
 
-        public async Task<List<Foo>> GetAllActiveFoosByType(Guid fooTypeId)
+        public async Task<List<FooDto>> GetAllActiveFoosByType(Guid fooTypeId)
         {
             return await _fooRepository.GetActiveFoosByType(fooTypeId);
         }
 
-        public async Task<Foo> GetFoo(Guid id)
+        public async Task<FooDto> GetFoo(Guid id)
         {
             return await _fooRepository.GetFoo(id);
         }
 
-        public async Task InsertFoo(string name)
+        public async Task InsertFoo(FooDto item)
         {
-            await _fooRepository.InsertFoo(name);
+            await _fooRepository.InsertFoo(item.FooTypeId, item.Name);
         }
 
         public async Task UpdateFooName(Guid id, string name)
@@ -55,14 +52,14 @@ namespace FooGooBusiness
             await _fooRepository.DeactivateFoo(id);
         }
 
-        public async Task<List<FooType>> GetAllActiveFooTypes()
+        public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
         {
             return await _fooTypeRepository.GetAllActiveFooTypes();
         }
 
-        public async Task InsertFooType(string name)
+        public async Task InsertFooType(FooTypeDto item)
         {
-            await _fooTypeRepository.InsertFooType(name);
+            await _fooTypeRepository.InsertFooType(item.Name);
         }
 
         public async Task UpdateFooTypeName(Guid id, string name)
@@ -70,14 +67,14 @@ namespace FooGooBusiness
             await _fooTypeRepository.UpdateFooTypeName(id, name);
         }
 
-        public async Task<List<Bar>> GetAllActiveBarsByFooId(Guid fooId)
+        public async Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
         {
             return await _barRepository.GetAllActiveBarsByFooId(fooId);
         }
 
-        public async Task InsertBar(Guid fooId, string name)
+        public async Task InsertBar(BarDto item)
         {
-            await _barRepository.InsertBar(fooId, name);
+            await _barRepository.InsertBar(item.FooId, item.Name);
         }
 
         public async Task UpdateBarName(Guid id, string name)

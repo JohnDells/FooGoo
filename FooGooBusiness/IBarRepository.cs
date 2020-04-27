@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.Bars
+namespace FooGooBusiness
 {
     public interface IBarRepository
     {
-        Task<List<Bar>> GetAllActiveBarsByFooId(Guid fooId);
+        Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId);
 
         Task InsertBar(Guid fooId, string name);
 

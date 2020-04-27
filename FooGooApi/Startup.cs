@@ -1,4 +1,6 @@
 using Autofac;
+using FooGooBusiness.Ef;
+using FooGooBusiness.MongoDb;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +10,7 @@ using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
 
 namespace FooGooApi
-{ 
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -31,8 +33,11 @@ namespace FooGooApi
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
-            builder.RegisterModule(new MongoDbApplicationModule(connectionString));
+            //var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
+            //builder.RegisterModule(new MongoDbApplicationModule(connectionString));
+
+            var connectionString = Configuration["ConnectionStrings:EfDefault"];
+            builder.RegisterModule(new EfApplicationModule(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

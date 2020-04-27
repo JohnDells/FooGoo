@@ -1,7 +1,4 @@
-﻿using FooGooBusiness.Bars;
-using FooGooBusiness.Foos;
-using FooGooBusiness.FooTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,13 +6,13 @@ namespace FooGooBusiness
 {
     public interface IFooManager
     {
-        Task<List<Foo>> GetAllActiveFoos();
+        Task<List<FooDto>> GetAllActiveFoos();
 
-        Task<List<Foo>> GetAllActiveFoosByType(Guid fooTypeId);
+        Task<List<FooDto>> GetAllActiveFoosByType(Guid fooTypeId);
 
-        Task<Foo> GetFoo(Guid id);
+        Task<FooDto> GetFoo(Guid id);
 
-        Task InsertFoo(string name);
+        Task InsertFoo(FooDto item);
 
         Task UpdateFooName(Guid id, string name);
 
@@ -23,15 +20,15 @@ namespace FooGooBusiness
 
         Task DeactivateFoo(Guid id);
 
-        Task<List<FooType>> GetAllActiveFooTypes();
+        Task<List<FooTypeDto>> GetAllActiveFooTypes();
 
-        Task InsertFooType(string name);
+        Task InsertFooType(FooTypeDto item);
 
         Task UpdateFooTypeName(Guid id, string name);
 
-        Task<List<Bar>> GetAllActiveBarsByFooId(Guid fooId);
+        Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId);
 
-        Task InsertBar(Guid fooId, string name);
+        Task InsertBar(BarDto item);
 
         Task UpdateBarName(Guid id, string name);
 

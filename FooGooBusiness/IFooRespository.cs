@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.Foos
+namespace FooGooBusiness
 {
     public interface IFooRespository
     {
-        Task<List<Foo>> GetAllActiveFoos();
+        Task<List<FooDto>> GetAllActiveFoos();
 
-        Task<List<Foo>> GetActiveFoosByType(Guid fooTypeId);
+        Task<List<FooDto>> GetActiveFoosByType(Guid fooTypeId);
 
-        Task<Foo> GetFoo(Guid id);
+        Task<FooDto> GetFoo(Guid id);
 
-        Task InsertFoo(string name);
+        Task InsertFoo(Guid fooTypeId, string name);
 
         Task UpdateFooName(Guid id, string name);
 

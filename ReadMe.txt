@@ -1,6 +1,6 @@
 TODO:
 
-1.  Implement autoFac
+8.  Implement UI - React / Grommet
 1.  Implement DTO's.
 2.  Implement secrets
 2.  Implement RoutePrefix
@@ -12,7 +12,6 @@ TODO:
 5.  Implement Unit Tests
 6.  Implement UI - AngularJS
 7.  Implement UI - Angular
-8.  Implement UI - React
 9.  Implement UI - Vue
 2.  Implement "Baz" = sibling of "Foo"
 1.  Implement "Goo" = graph of "Foo"

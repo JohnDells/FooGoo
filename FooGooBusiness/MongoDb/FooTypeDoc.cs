@@ -2,18 +2,16 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace FooGooBusiness.Foos
+namespace FooGooBusiness.MongoDb
 {
     /// <summary>
-    /// This is the main "thing" that this microservice controls.
+    /// This class is intended to be a "category" or "group" of Foos, and
+    ///     given the limited number of entries can be cached to provide a lookup / match.
     /// </summary>
-    public class Foo
+    public class FooTypeDoc
     {
         [BsonId]
         public ObjectId Id { get; set; }
-
-        [BsonElement("foo_id")]
-        public Guid FooId { get; set; }
 
         [BsonElement("foo_type_id")]
         public Guid FooTypeId { get; set; }

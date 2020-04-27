@@ -1,7 +1,4 @@
 ﻿using FooGooBusiness;
-using FooGooBusiness.Bars;
-using FooGooBusiness.Foos;
-using FooGooBusiness.FooTypes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -25,30 +22,30 @@ namespace FooGooApi.Controllers
 
         [HttpGet]
         [Route("api/foos")]
-        public async Task<IEnumerable<Foo>> GetAll()
+        public async Task<IEnumerable<FooDto>> GetAll()
         {
             return await _manager.GetAllActiveFoos();
         }
 
         [HttpGet]
         [Route("api/foos/fooTypeId/{fooTypeId}")]
-        public async Task<List<Foo>> GetActiveByType(Guid fooTypeId)
+        public async Task<List<FooDto>> GetActiveByType(Guid fooTypeId)
         {
             return await _manager.GetAllActiveFoosByType(fooTypeId);
         }
 
         [HttpGet]
         [Route("api/foos/{id}")]
-        public async Task<Foo> Get(Guid id)
+        public async Task<FooDto> Get(Guid id)
         {
             return await _manager.GetFoo(id);
         }
 
         [HttpPost]
-        [Route("api/foos/{name}")]
-        public async Task Insert(string name)
+        [Route("api/foos")]
+        public async Task Insert([FromBody] FooDto item)
         {
-            await _manager.InsertFoo(name);
+            await _manager.InsertFoo(item);
         }
 
         [HttpPut]

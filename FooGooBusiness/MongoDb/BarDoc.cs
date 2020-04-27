@@ -2,9 +2,9 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace FooGooBusiness.Bars
+namespace FooGooBusiness.MongoDb
 {
-    public class Bar
+    public class BarDoc
     {
         [BsonId]
         public ObjectId Id { get; set; }

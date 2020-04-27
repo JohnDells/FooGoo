@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.FooTypes
+namespace FooGooBusiness
 {
     public interface IFooTypeRepository
     {
-        Task<List<FooType>> GetAllActiveFooTypes();
+        Task<List<FooTypeDto>> GetAllActiveFooTypes();
 
         Task InsertFooType(string name);
 

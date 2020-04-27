@@ -1,9 +1,10 @@
-﻿using MongoDB.Driver;
+﻿using AutoMapper;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.Bars
+namespace FooGooBusiness.MongoDb
 {
     public class BarMongoDbRepository : IBarRepository
     {
@@ -12,24 +13,28 @@ namespace FooGooBusiness.Bars
         private readonly string _connectionString;
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
-        private readonly IMongoCollection<Bar> _collection;
+        private readonly IMongoCollection<BarDoc> _collection;
+        private readonly IMapper _mapper;
 
-        public BarMongoDbRepository(string connectionString)
+        public BarMongoDbRepository(string connectionString, IMapper mapper)
         {
             _connectionString = connectionString;
             _client = new MongoClient(_connectionString);
             _database = _client.GetDatabase(_databaseName);
-            _collection = _database.GetCollection<Bar>(_collectionName);
+            _collection = _database.GetCollection<BarDoc>(_collectionName);
+            _mapper = mapper;
         }
 
-        public async Task<List<Bar>> GetAllActiveBarsByFooId(Guid fooId)
+        public async Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
         {
-            return await _collection.Find<Bar>(Builders<Bar>.Filter.Eq((x) => x.FooId, fooId) & Builders<Bar>.Filter.Eq((x) => x.Active, true)).ToListAsync();
+            var items = await _collection.Find<BarDoc>(Builders<BarDoc>.Filter.Eq((x) => x.FooId, fooId) & Builders<BarDoc>.Filter.Eq((x) => x.Active, true)).ToListAsync();
+            var result = _mapper.Map<List<BarDto>>(items);
+            return result;
         }
 
         public async Task InsertBar(Guid fooId, string name)
         {
-            var item = new Bar() { BarId = Guid.NewGuid(), FooId = fooId, Name = name, Active = true };
+            var item = new BarDoc() { BarId = Guid.NewGuid(), FooId = fooId, Name = name, Active = true };
 
             using (var session = await _client.StartSessionAsync())
             {
@@ -41,7 +46,7 @@ namespace FooGooBusiness.Bars
         {
             using (var session = await _client.StartSessionAsync())
             {
-                await _collection.UpdateOneAsync(session, Builders<Bar>.Filter.Eq((x) => x.BarId, id), Builders<Bar>.Update.Set((x) => x.Name, name));
+                await _collection.UpdateOneAsync(session, Builders<BarDoc>.Filter.Eq((x) => x.BarId, id), Builders<BarDoc>.Update.Set((x) => x.Name, name));
             }
         }
 
@@ -49,7 +54,7 @@ namespace FooGooBusiness.Bars
         {
             using (var session = await _client.StartSessionAsync())
             {
-                await _collection.UpdateOneAsync(session, Builders<Bar>.Filter.Eq((x) => x.BarId, id), Builders<Bar>.Update.Set((x) => x.Active, false));
+                await _collection.UpdateOneAsync(session, Builders<BarDoc>.Filter.Eq((x) => x.BarId, id), Builders<BarDoc>.Update.Set((x) => x.Active, false));
             }
         }
     }
