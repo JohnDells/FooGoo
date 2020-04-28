@@ -16,6 +16,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FooGooBusiness\FooGooBusiness.csproj" />
+    <ProjectReference Include="..\FooGooDapper\FooGooDapper.csproj" />
+    <ProjectReference Include="..\FooGooEf\FooGooEf.csproj" />
+    <ProjectReference Include="..\FooGooMongoDb\FooGooMongoDb.csproj" />
   </ItemGroup>
 
 

@@ -1,6 +1,7 @@
 using Autofac;
-using FooGooBusiness.Ef;
-using FooGooBusiness.MongoDb;
+using FooGooDapper;
+using FooGooEf;
+using FooGooMongoDb;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,7 @@ namespace FooGooApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,11 +34,14 @@ namespace FooGooApi
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
-            builder.RegisterModule(new MongoDbApplicationModule(connectionString));
+            //var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
+            //builder.RegisterModule(new MongoDbApplicationModule(connectionString));
 
             //var connectionString = Configuration["ConnectionStrings:EfDefault"];
             //builder.RegisterModule(new EfApplicationModule(connectionString));
+
+            var connectionString = Configuration["ConnectionStrings:DapperDefault"];
+            builder.RegisterModule(new DapperApplicationModule(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

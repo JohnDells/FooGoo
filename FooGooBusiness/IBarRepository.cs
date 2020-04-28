@@ -12,6 +12,6 @@ namespace FooGooBusiness
 
         Task UpdateBarName(Guid id, string name);
 
-        Task DeactivateBar(Guid id);
+        Task RemoveBar(Guid id);
     }
 }

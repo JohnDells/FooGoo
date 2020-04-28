@@ -1,20 +1,19 @@
 TODO:
 
-8.  Implement UI - React / Grommet
-1.  Implement DTO's.
+1.  Implement UI - React / Grommet
 2.  Implement secrets
-2.  Implement RoutePrefix
-2.  Implement Unit of Work
-3.  Implement Event Sourcing
-3.  Implement Azure Service Bus / Functions
-3.  Implement EF
-4.  Implement Dapper
-5.  Implement Unit Tests
-6.  Implement UI - AngularJS
-7.  Implement UI - Angular
-9.  Implement UI - Vue
-2.  Implement "Baz" = sibling of "Foo"
-1.  Implement "Goo" = graph of "Foo"
+3.  Implement RoutePrefix
+4.  Implement Unit of Work
+5.  Implement Event Sourcing
+6.  Implement Azure Service Bus / Functions
+7.  Implement Dapper
+8.  Implement Unit Tests
+9.  Implement UI - AngularJS
+10.  Implement UI - Angular
+11.  Implement UI - Vue
+12.  Implement "Baz" = sibling of "Foo"
+13.  Implement "Goo" = graph of "Foo"
+14.  Implement "cached" calls
 
 
 

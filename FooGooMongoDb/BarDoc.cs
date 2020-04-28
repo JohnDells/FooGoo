@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace FooGooBusiness.MongoDb
+namespace FooGooMongoDb
 {
     public class BarDoc
     {

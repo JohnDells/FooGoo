@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace FooGooBusiness.MongoDb
+namespace FooGooMongoDb
 {
     /// <summary>
     /// This class is intended to be a "category" or "group" of Foos, and

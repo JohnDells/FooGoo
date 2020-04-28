@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using FooGooBusiness;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.Ef
+namespace FooGooEf
 {
     public class BarEfRepository : IBarRepository
     {
@@ -42,7 +43,7 @@ namespace FooGooBusiness.Ef
             }
         }
 
-        public async Task DeactivateBar(Guid id)
+        public async Task RemoveBar(Guid id)
         {
             var item = await _context.Bars.Where(x => x.BarId == id).FirstOrDefaultAsync();
             if (item != null)

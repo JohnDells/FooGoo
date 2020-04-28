@@ -1,4 +1,4 @@
-﻿namespace FooGooBusiness.MongoDb
+﻿namespace FooGooMongoDb
 {
     public static class MongoDbConstants
     {

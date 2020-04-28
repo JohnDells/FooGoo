@@ -1,8 +1,9 @@
 ﻿using Autofac;
 using AutoMapper;
+using FooGooBusiness;
 using MongoDB.Driver;
 
-namespace FooGooBusiness.MongoDb
+namespace FooGooMongoDb
 {
     public class MongoDbApplicationModule : Module
     {

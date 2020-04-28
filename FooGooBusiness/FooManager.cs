@@ -49,7 +49,7 @@ namespace FooGooBusiness
 
         public async Task DeactivateFoo(Guid id)
         {
-            await _fooRepository.DeactivateFoo(id);
+            await _fooRepository.RemoveFoo(id);
         }
 
         public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
@@ -84,7 +84,7 @@ namespace FooGooBusiness
 
         public async Task DeactivateBar(Guid id)
         {
-            await _barRepository.DeactivateBar(id);
+            await _barRepository.RemoveBar(id);
         }
     }
 }

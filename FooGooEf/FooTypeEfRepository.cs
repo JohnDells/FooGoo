@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using FooGooBusiness;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.Ef
+namespace FooGooEf
 {
     public class FooTypeEfRepository : DbContext, IFooTypeRepository
     {

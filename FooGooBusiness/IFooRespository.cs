@@ -18,6 +18,6 @@ namespace FooGooBusiness
 
         Task UpdateFooTypeId(Guid id, Guid fooTypeId);
 
-        Task DeactivateFoo(Guid id);
+        Task RemoveFoo(Guid id);
     }
 }

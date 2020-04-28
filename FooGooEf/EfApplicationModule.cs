@@ -1,7 +1,8 @@
 ﻿using Autofac;
 using AutoMapper;
+using FooGooBusiness;
 
-namespace FooGooBusiness.Ef
+namespace FooGooEf
 {
     /// <summary>
     /// Configures EF context and the DTO/Entity mapping for each repository.

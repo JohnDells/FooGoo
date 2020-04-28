@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using FooGooBusiness;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FooGooBusiness.MongoDb
+namespace FooGooMongoDb
 {
     public class FooMongoDbRepository : IFooRespository
     {
@@ -71,7 +72,7 @@ namespace FooGooBusiness.MongoDb
             }
         }
 
-        public async Task DeactivateFoo(Guid id)
+        public async Task RemoveFoo(Guid id)
         {
             using (var session = await _client.StartSessionAsync())
             {

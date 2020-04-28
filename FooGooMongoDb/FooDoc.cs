@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace FooGooBusiness.MongoDb
+namespace FooGooMongoDb
 {
     /// <summary>
     /// This is the main "thing" that this microservice controls.

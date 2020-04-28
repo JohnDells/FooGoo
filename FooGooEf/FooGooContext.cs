@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace FooGooBusiness.Ef
+namespace FooGooEf
 {
     public class FooGooContext : DbContext, IFooGooDbContext
     {

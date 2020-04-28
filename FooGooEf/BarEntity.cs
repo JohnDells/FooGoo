@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FooGooBusiness.Ef
+namespace FooGooEf
 {
     [Table("Bars")]
     public class BarEntity
