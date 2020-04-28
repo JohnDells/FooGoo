@@ -25,8 +25,6 @@ namespace FooGooEf
             builder.Register(c => new FooEfRepository(context, mapper)).As<IFooRespository>();
             builder.Register(c => new BarEfRepository(context, mapper)).As<IBarRepository>();
 
-            builder.RegisterType<FooManager>().As<IFooManager>();
-
             base.Load(builder);
         }
 

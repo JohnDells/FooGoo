@@ -21,8 +21,6 @@ namespace FooGooDapper
             builder.Register(c => new FooDapperRepository(_connectionString, mapper)).As<IFooRespository>();
             builder.Register(c => new BarDapperRepository(_connectionString, mapper)).As<IBarRepository>();
 
-            builder.RegisterType<FooManager>().As<IFooManager>();
-
             base.Load(builder);
         }
 

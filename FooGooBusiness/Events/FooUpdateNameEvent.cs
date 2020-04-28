@@ -2,9 +2,9 @@
 
 namespace FooGooBusiness.Events
 {
-    public class FooTypeCreateEvent : IFooGooEvent
+    public class FooUpdateNameEvent : IFooGooEvent
     {
-        public string Type => FooEventConstants.CreateFooType;
+        public string Type => FooEventConstants.UpdateFooName;
 
         public Guid Id { get; set; }
 

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace FooGooBusiness.Events
+namespace FooGooBusiness
 {
-    public interface IFooEvent
+    public interface IFooGooEvent
     {
         public string Type { get; }
 

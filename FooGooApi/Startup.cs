@@ -1,4 +1,5 @@
 using Autofac;
+using FooGooBusiness;
 using FooGooDapper;
 using FooGooEf;
 using FooGooMongoDb;
@@ -19,7 +20,7 @@ namespace FooGooApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; } 
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,6 +35,8 @@ namespace FooGooApi
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
+            builder.RegisterModule(new FooGooBusinessModule());
+
             //var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
             //builder.RegisterModule(new MongoDbApplicationModule(connectionString));
 

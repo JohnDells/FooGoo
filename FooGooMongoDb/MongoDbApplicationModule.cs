@@ -23,8 +23,6 @@ namespace FooGooMongoDb
             builder.Register(c => new FooMongoDbRepository(client, mapper)).As<IFooRespository>();
             builder.Register(c => new BarMongoDbRepository(client, mapper)).As<IBarRepository>();
 
-            builder.RegisterType<FooManager>().As<IFooManager>();
-
             base.Load(builder);
         }
 
