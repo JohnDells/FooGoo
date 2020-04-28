@@ -1,4 +1,5 @@
 bin
 obj
+.vs
 *.suo
 /.vs/FooGoo/v16/TestStore/0
