@@ -21,6 +21,16 @@ Data Structure:
 	Baz:		This is a sibling of "Foo", with a many to many relationship.
 	Goo:		This is a relationship between two Foos "nodes" - representing the "edge" in a graph implementation.
 
+Philosophy and principals:
+	1.  You should be able to swap out repositories to point at different data sources.
+		a.  This should be as easy as a switch in the Startup / DI layer.
+	2.  Entity objects are specific to the type of repository.  i.e.  Mongo uses an objectId that is specific to Mongo.
+	3.  Managers should have no knowledge of entity objects, but rather use DTO (data transfer objects) to interface with repos.
+	4.  Guids are used universally as unique keys.
+	5.  Predictable failure should always happen gracefully.
+		a.  500 response at the controller level is reserved for unexpected stuff.
+		b.  Duplicate checks are considered predictable.
+
 
 
 	

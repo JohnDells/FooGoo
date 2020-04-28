@@ -22,7 +22,6 @@ namespace FooGooDapper
         public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
         {
             var query = "SELECT * FROM [dbo].[FooTypes];";
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 var items = await connection.QueryAsync<FooTypeRec>(query);
@@ -31,14 +30,22 @@ namespace FooGooDapper
             }
         }
 
-        public Task InsertFooType(FooTypeDto item)
+        public async Task InsertFooType(FooTypeDto item)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO [dbo].[FooTypes] ([FooTypeId], [Name], [Active]) VALUES (@FooTypeId, @Name, @Active);";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooTypeId = item.FooTypeId, Name = item.Name, Active = item.Active });
+            }
         }
 
-        public Task UpdateFooTypeName(Guid id, string name)
+        public async Task UpdateFooTypeName(Guid id, string name)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[FooTypes] SET [Name] = @Name WHERE [FooTypeId] = @FooTypeId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooTypeId = id, Name = name });
+            }
         }
     }
 }

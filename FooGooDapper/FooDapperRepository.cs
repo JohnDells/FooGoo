@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Dapper;
 using FooGooBusiness;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -17,39 +19,73 @@ namespace FooGooDapper
             _mapper = mapper;
         }
 
-        public Task<List<FooDto>> GetActiveFoosByType(Guid fooTypeId)
+        public async Task<List<FooDto>> GetActiveFoosByType(Guid fooTypeId)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM [dbo].[Foos] WHERE [Active] = 1 AND [FooTypeId] = @FooTypeId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var items = await connection.QueryAsync<FooRec>(query, new { FooTypeId = fooTypeId});
+                var result = _mapper.Map<List<FooDto>>(items);
+                return result;
+            }
         }
 
-        public Task<List<FooDto>> GetAllActiveFoos()
+        public async Task<List<FooDto>> GetAllActiveFoos()
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM [dbo].[Foos] WHERE [Active] = 1;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var items = await connection.QueryAsync<FooRec>(query);
+                var result = _mapper.Map<List<FooDto>>(items);
+                return result;
+            }
         }
 
-        public Task<FooDto> GetFoo(Guid id)
+        public async Task<FooDto> GetFoo(Guid id)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM [dbo].[Foos] WHERE [Active] = 1 AND [FooId] = @FooId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var item = await connection.QuerySingleOrDefaultAsync<FooRec>(query, new { FooId = id });
+                var result = _mapper.Map<FooDto>(item);
+                return result;
+            }
         }
 
-        public Task InsertFoo(FooDto item)
+        public async Task InsertFoo(FooDto item)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO [dbo].[Foos] ([FooId], [FooTypeId], [Name], [Active]) VALUES (@FooId, @FooTypeId, @Name, @Active);";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooId = item.FooId, FooTypeId = item.FooTypeId, Name = item.Name, Active = item.Active });
+            }
         }
 
-        public Task UpdateFooName(Guid id, string name)
+        public async Task UpdateFooName(Guid id, string name)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[Foos] SET [Name] = @Name WHERE [FooId] = @FooId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooId = id, Name = name });
+            }
         }
 
-        public Task UpdateFooTypeId(Guid id, Guid fooTypeId)
+        public async Task UpdateFooTypeId(Guid id, Guid fooTypeId)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[Foos] SET [FooTypeId] = @FooTypeId WHERE [FooId] = @FooId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooId = id, FooTypeId = fooTypeId });
+            }
         }
 
-        public Task RemoveFoo(Guid id)
+        public async Task RemoveFoo(Guid id)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[Foos] SET [Active] = 0 WHERE [FooId] = @FooId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooId = id });
+            }
         }
     }
 }

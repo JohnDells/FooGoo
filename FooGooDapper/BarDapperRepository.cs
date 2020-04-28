@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Dapper;
 using FooGooBusiness;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -17,24 +19,43 @@ namespace FooGooDapper
             _mapper = mapper;
         }
 
-        public Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
+        public async Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM [dbo].[Bars] WHERE [Active] = 1 AND [FooId] = @FooId;";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var items = await connection.QueryAsync<BarRec>(query, new { FooId = fooId });
+                var result = _mapper.Map<List<BarDto>>(items);
+                return result;
+            }
         }
 
-        public Task InsertBar(BarDto item)
+        public async Task InsertBar(BarDto item)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO [dbo].[Bars] ([BarId], [FooId], [Name], [Active]) VALUES (@BarId, @FooId, @Name, @Active);";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { BarId = item.BarId, FooId = item.FooId, Name = item.Name, Active = item.Active });
+            }
         }
 
-        public Task UpdateBarName(Guid id, string name)
+        public async Task UpdateBarName(Guid id, string name)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[Bars] SET [Name] = @Name WHERE [BarId] = @BarId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { BarId = id, Name = name });
+            }
         }
 
-        public Task RemoveBar(Guid id)
+        public async Task RemoveBar(Guid id)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE [dbo].[Bars] SET [Active] = 0 WHERE [BarId] = @BarId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { BarId = id });
+            }
         }
     }
 }

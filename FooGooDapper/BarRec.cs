@@ -1,10 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FooGooDapper
 {
     public class BarRec
     {
+        public Guid BarId { get; set; }
+
+        public Guid FooId { get; set; }
+
+        public string Name { get; set; }
+
+        public bool Active { get; set; }
     }
 }

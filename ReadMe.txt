@@ -14,6 +14,7 @@ TODO:
 12.  Implement "Baz" = sibling of "Foo"
 13.  Implement "Goo" = graph of "Foo"
 14.  Implement "cached" calls
+15.  Implement validation  (passive [string length, non-null guids] and active [duplicate name])
 
 
 
