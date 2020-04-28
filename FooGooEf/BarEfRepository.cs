@@ -26,7 +26,7 @@ namespace FooGooEf
             return result;
         }
 
-        public async Task InsertBar(BarDto item)
+        public async Task CreateBar(BarDto item)
         {
             var entity = _mapper.Map<BarEntity>(item);
             _context.Bars.Add(entity);
@@ -43,7 +43,7 @@ namespace FooGooEf
             }
         }
 
-        public async Task RemoveBar(Guid id)
+        public async Task DeleteBar(Guid id)
         {
             var item = await _context.Bars.Where(x => x.BarId == id).FirstOrDefaultAsync();
             if (item != null)

@@ -18,12 +18,17 @@ namespace FooGooBusiness.Dapper
             throw new NotImplementedException();
         }
 
-        public Task InsertFooType(FooTypeDto item)
+        public Task CreateFooType(FooTypeDto item)
         {
             throw new NotImplementedException();
         }
 
         public Task UpdateFooTypeName(Guid id, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteFooType(Guid id)
         {
             throw new NotImplementedException();
         }

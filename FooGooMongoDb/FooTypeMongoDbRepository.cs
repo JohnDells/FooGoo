@@ -32,7 +32,7 @@ namespace FooGooMongoDb
             return result;
         }
 
-        public async Task InsertFooType(FooTypeDto item)
+        public async Task CreateFooType(FooTypeDto item)
         {
             var doc = _mapper.Map<FooTypeDoc>(item);
             using (var session = await _client.StartSessionAsync())
@@ -46,6 +46,14 @@ namespace FooGooMongoDb
             using (var session = await _client.StartSessionAsync())
             {
                 await _collection.UpdateOneAsync(session, Builders<FooTypeDoc>.Filter.Eq((x) => x.FooTypeId, id), Builders<FooTypeDoc>.Update.Set((x) => x.Name, name));
+            }
+        }
+
+        public async Task DeleteFooType(Guid id)
+        {
+            using (var session = await _client.StartSessionAsync())
+            {
+                await _collection.UpdateOneAsync(session, Builders<FooTypeDoc>.Filter.Eq((x) => x.FooTypeId, id), Builders<FooTypeDoc>.Update.Set((x) => x.Active, false));
             }
         }
     }

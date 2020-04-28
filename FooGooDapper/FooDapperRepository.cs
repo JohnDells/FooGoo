@@ -52,7 +52,7 @@ namespace FooGooDapper
             }
         }
 
-        public async Task InsertFoo(FooDto item)
+        public async Task CreateFoo(FooDto item)
         {
             var query = "INSERT INTO [dbo].[Foos] ([FooId], [FooTypeId], [Name], [Active]) VALUES (@FooId, @FooTypeId, @Name, @Active);";
             using (var connection = new SqlConnection(_connectionString))
@@ -79,7 +79,7 @@ namespace FooGooDapper
             }
         }
 
-        public async Task RemoveFoo(Guid id)
+        public async Task DeleteFoo(Guid id)
         {
             var query = "UPDATE [dbo].[Foos] SET [Active] = 0 WHERE [FooId] = @FooId;";
             using (var connection = new SqlConnection(_connectionString))

@@ -32,7 +32,7 @@ namespace FooGooMongoDb
             return result;
         }
 
-        public async Task InsertBar(BarDto item)
+        public async Task CreateBar(BarDto item)
         {
             var doc = _mapper.Map<BarDoc>(item);
             using (var session = await _client.StartSessionAsync())
@@ -49,7 +49,7 @@ namespace FooGooMongoDb
             }
         }
 
-        public async Task RemoveBar(Guid id)
+        public async Task DeleteBar(Guid id)
         {
             using (var session = await _client.StartSessionAsync())
             {

@@ -30,7 +30,7 @@ namespace FooGooDapper
             }
         }
 
-        public async Task InsertFooType(FooTypeDto item)
+        public async Task CreateFooType(FooTypeDto item)
         {
             var query = "INSERT INTO [dbo].[FooTypes] ([FooTypeId], [Name], [Active]) VALUES (@FooTypeId, @Name, @Active);";
             using (var connection = new SqlConnection(_connectionString))
@@ -45,6 +45,15 @@ namespace FooGooDapper
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(query, new { FooTypeId = id, Name = name });
+            }
+        }
+
+        public async Task DeleteFooType(Guid id)
+        {
+            var query = "UPDATE [dbo].[FooTypes] SET [Active] = 0 WHERE [FooTypeId] = @BarId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, new { FooTypeId = id });
             }
         }
     }

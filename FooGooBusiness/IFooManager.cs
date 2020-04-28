@@ -6,32 +6,34 @@ namespace FooGooBusiness
 {
     public interface IFooManager
     {
+        Task<List<FooTypeDto>> GetAllActiveFooTypes();
+
+        Task CreateFooType(FooTypeDto item);
+
+        Task UpdateFooTypeName(Guid id, string name);
+
+        Task DeleteFooType(Guid id);
+
         Task<List<FooDto>> GetAllActiveFoos();
 
         Task<List<FooDto>> GetAllActiveFoosByType(Guid fooTypeId);
 
         Task<FooDto> GetFoo(Guid id);
 
-        Task InsertFoo(FooDto item);
+        Task CreateFoo(FooDto item);
 
         Task UpdateFooName(Guid id, string name);
 
         Task UpdateFooTypeId(Guid id, Guid fooTypeId);
 
-        Task DeactivateFoo(Guid id);
-
-        Task<List<FooTypeDto>> GetAllActiveFooTypes();
-
-        Task InsertFooType(FooTypeDto item);
-
-        Task UpdateFooTypeName(Guid id, string name);
+        Task DeleteFoo(Guid id);
 
         Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId);
 
-        Task InsertBar(BarDto item);
+        Task CreateBar(BarDto item);
 
         Task UpdateBarName(Guid id, string name);
 
-        Task DeactivateBar(Guid id);
+        Task DeleteBar(Guid id);
     }
 }

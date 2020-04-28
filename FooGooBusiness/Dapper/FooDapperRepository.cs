@@ -28,7 +28,7 @@ namespace FooGooBusiness.Dapper
             throw new NotImplementedException();
         }
 
-        public Task InsertFoo(FooDto item)
+        public Task CreateFoo(FooDto item)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,7 @@ namespace FooGooBusiness.Dapper
             throw new NotImplementedException();
         }
 
-        public Task RemoveFoo(Guid id)
+        public Task DeleteFoo(Guid id)
         {
             throw new NotImplementedException();
         }

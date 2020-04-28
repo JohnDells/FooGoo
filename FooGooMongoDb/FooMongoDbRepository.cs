@@ -47,7 +47,7 @@ namespace FooGooMongoDb
             return result;
         }
 
-        public async Task InsertFoo(FooDto item)
+        public async Task CreateFoo(FooDto item)
         {
             var doc = _mapper.Map<FooDoc>(item);
             using (var session = await _client.StartSessionAsync())
@@ -72,7 +72,7 @@ namespace FooGooMongoDb
             }
         }
 
-        public async Task RemoveFoo(Guid id)
+        public async Task DeleteFoo(Guid id)
         {
             using (var session = await _client.StartSessionAsync())
             {

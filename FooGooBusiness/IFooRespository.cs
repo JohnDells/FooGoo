@@ -12,12 +12,12 @@ namespace FooGooBusiness
 
         Task<FooDto> GetFoo(Guid id);
 
-        Task InsertFoo(FooDto item);
+        Task CreateFoo(FooDto item);
 
         Task UpdateFooName(Guid id, string name);
 
         Task UpdateFooTypeId(Guid id, Guid fooTypeId);
 
-        Task RemoveFoo(Guid id);
+        Task DeleteFoo(Guid id);
     }
 }

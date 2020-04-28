@@ -18,7 +18,7 @@ namespace FooGooBusiness.Dapper
             throw new NotImplementedException();
         }
 
-        public Task InsertBar(BarDto item)
+        public Task CreateBar(BarDto item)
         {
             throw new NotImplementedException();
         }
@@ -28,7 +28,7 @@ namespace FooGooBusiness.Dapper
             throw new NotImplementedException();
         }
 
-        public Task RemoveBar(Guid id)
+        public Task DeleteBar(Guid id)
         {
             throw new NotImplementedException();
         }

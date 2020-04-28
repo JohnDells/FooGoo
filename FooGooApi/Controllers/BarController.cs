@@ -30,9 +30,9 @@ namespace FooGooApi.Controllers
 
         [HttpPost]
         [Route("api/foos/{fooId}/bars")]
-        public async Task Insert([FromBody] BarDto item)
+        public async Task Create([FromBody] BarDto item)
         {
-            await _manager.InsertBar(item);
+            await _manager.CreateBar(item);
         }
 
         [HttpPut]
@@ -44,9 +44,9 @@ namespace FooGooApi.Controllers
 
         [HttpPut]
         [Route("api/foos/{fooId}/bars/{id}/deactivate")]
-        public async Task Deactivate(Guid id)
+        public async Task Delete(Guid id)
         {
-            await _manager.DeactivateBar(id);
+            await _manager.DeleteBar(id);
         }
     }
 }

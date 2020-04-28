@@ -40,7 +40,7 @@ namespace FooGooEf
             return result;
         }
 
-        public async Task InsertFoo(FooDto item)
+        public async Task CreateFoo(FooDto item)
         {
             var entity = _mapper.Map<FooEntity>(item);
             _context.Foos.Add(entity);
@@ -67,7 +67,7 @@ namespace FooGooEf
             }
         }
 
-        public async Task RemoveFoo(Guid id)
+        public async Task DeleteFoo(Guid id)
         {
             var item = await _context.Foos.Where(x => x.FooId == id).FirstOrDefaultAsync();
             if (item != null)

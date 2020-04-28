@@ -30,9 +30,9 @@ namespace FooGooApi.Controllers
 
         [HttpPost]
         [Route("api/footypes")]
-        public async Task Insert([FromBody] FooTypeDto item)
+        public async Task Create([FromBody] FooTypeDto item)
         {
-            await _manager.InsertFooType(item);
+            await _manager.CreateFooType(item);
         }
 
         [HttpPut]
@@ -41,5 +41,13 @@ namespace FooGooApi.Controllers
         {
             await _manager.UpdateFooTypeName(id, name);
         }
+
+        [HttpPut]
+        [Route("api/footypes/{id}/deactivate")]
+        public async Task Delete(Guid id)
+        {
+            await _manager.DeleteFooType(id);
+        }
+
     }
 }

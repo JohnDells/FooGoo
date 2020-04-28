@@ -26,7 +26,7 @@ namespace FooGooEf
             return result;
         }
 
-        public async Task InsertFooType(FooTypeDto item)
+        public async Task CreateFooType(FooTypeDto item)
         {
             var entity = _mapper.Map<FooTypeEntity>(item);
             _context.FooTypes.Add(entity);
@@ -39,6 +39,16 @@ namespace FooGooEf
             if (item != null)
             {
                 item.Name = name;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteFooType(Guid id)
+        {
+            var item = await _context.FooTypes.Where(x => x.FooTypeId == id).FirstOrDefaultAsync();
+            if (item != null)
+            {
+                item.Active = false;
                 await _context.SaveChangesAsync();
             }
         }

@@ -32,9 +32,9 @@ namespace FooGooBusiness
             return await _fooRepository.GetFoo(id);
         }
 
-        public async Task InsertFoo(FooDto item)
+        public async Task CreateFoo(FooDto item)
         {
-            await _fooRepository.InsertFoo(item);
+            await _fooRepository.CreateFoo(item);
         }
 
         public async Task UpdateFooName(Guid id, string name)
@@ -47,9 +47,9 @@ namespace FooGooBusiness
             await _fooRepository.UpdateFooTypeId(id, fooTypeId);
         }
 
-        public async Task DeactivateFoo(Guid id)
+        public async Task DeleteFoo(Guid id)
         {
-            await _fooRepository.RemoveFoo(id);
+            await _fooRepository.DeleteFoo(id);
         }
 
         public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
@@ -57,9 +57,9 @@ namespace FooGooBusiness
             return await _fooTypeRepository.GetAllActiveFooTypes();
         }
 
-        public async Task InsertFooType(FooTypeDto item)
+        public async Task CreateFooType(FooTypeDto item)
         {
-            await _fooTypeRepository.InsertFooType(item);
+            await _fooTypeRepository.CreateFooType(item);
         }
 
         public async Task UpdateFooTypeName(Guid id, string name)
@@ -67,14 +67,19 @@ namespace FooGooBusiness
             await _fooTypeRepository.UpdateFooTypeName(id, name);
         }
 
+        public async Task DeleteFooType(Guid id)
+        {
+            await _fooTypeRepository.DeleteFooType(id);
+        }
+
         public async Task<List<BarDto>> GetAllActiveBarsByFooId(Guid fooId)
         {
             return await _barRepository.GetAllActiveBarsByFooId(fooId);
         }
 
-        public async Task InsertBar(BarDto item)
+        public async Task CreateBar(BarDto item)
         {
-            await _barRepository.InsertBar(item);
+            await _barRepository.CreateBar(item);
         }
 
         public async Task UpdateBarName(Guid id, string name)
@@ -82,9 +87,9 @@ namespace FooGooBusiness
             await _barRepository.UpdateBarName(id, name);
         }
 
-        public async Task DeactivateBar(Guid id)
+        public async Task DeleteBar(Guid id)
         {
-            await _barRepository.RemoveBar(id);
+            await _barRepository.DeleteBar(id);
         }
     }
 }

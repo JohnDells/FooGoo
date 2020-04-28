@@ -31,7 +31,7 @@ namespace FooGooDapper
             }
         }
 
-        public async Task InsertBar(BarDto item)
+        public async Task CreateBar(BarDto item)
         {
             var query = "INSERT INTO [dbo].[Bars] ([BarId], [FooId], [Name], [Active]) VALUES (@BarId, @FooId, @Name, @Active);";
             using (var connection = new SqlConnection(_connectionString))
@@ -49,7 +49,7 @@ namespace FooGooDapper
             }
         }
 
-        public async Task RemoveBar(Guid id)
+        public async Task DeleteBar(Guid id)
         {
             var query = "UPDATE [dbo].[Bars] SET [Active] = 0 WHERE [BarId] = @BarId;";
             using (var connection = new SqlConnection(_connectionString))
