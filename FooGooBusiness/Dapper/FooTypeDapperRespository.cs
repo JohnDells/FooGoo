@@ -13,22 +13,27 @@ namespace FooGooBusiness.Dapper
             _connectionString = connectionString;
         }
 
-        public Task<List<FooTypeDto>> GetAllActiveFooTypes()
+        public async Task<List<FooTypeDto>> GetAllActiveFooTypes()
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateFooType(FooTypeDto item)
+        public async Task<FooTypeDto> GetFooType(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateFooTypeName(Guid id, string name)
+        public async Task CreateFooType(FooTypeDto item)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteFooType(Guid id)
+        public async Task UpdateFooTypeName(Guid id, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task DeleteFooType(Guid id)
         {
             throw new NotImplementedException();
         }

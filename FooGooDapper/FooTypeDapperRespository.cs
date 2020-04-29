@@ -30,6 +30,17 @@ namespace FooGooDapper
             }
         }
 
+        public async Task<FooTypeDto> GetFooType(Guid id)
+        {
+            var query = "SELECT * FROM [dbo].[FooTypes] WHERE [FooTypeId] = @FooTypeId;";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var items = await connection.QueryAsync<FooTypeRec>(query, new { FooTypeId = id });
+                var result = _mapper.Map<FooTypeDto>(items);
+                return result;
+            }
+        }
+
         public async Task CreateFooType(FooTypeDto item)
         {
             var query = "INSERT INTO [dbo].[FooTypes] ([FooTypeId], [Name], [Active]) VALUES (@FooTypeId, @Name, @Active);";

@@ -15,11 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{3D058282
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooGooCommon", "FooGooCommon\FooGooCommon.csproj", "{946A30E7-9BA8-4B05-8E29-C2ED6D246945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooGooEf", "FooGooEf\FooGooEf.csproj", "{86541612-1D85-482B-8C07-03CF88B55286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooGooEf", "FooGooEf\FooGooEf.csproj", "{86541612-1D85-482B-8C07-03CF88B55286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooGooMongoDb", "FooGooMongoDb\FooGooMongoDb.csproj", "{F3DE2E96-BD4E-4CA0-BA82-45C9B219C1A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooGooMongoDb", "FooGooMongoDb\FooGooMongoDb.csproj", "{F3DE2E96-BD4E-4CA0-BA82-45C9B219C1A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooGooDapper", "FooGooDapper\FooGooDapper.csproj", "{EA8E68A4-089D-4049-8A16-9CE83089EBA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooGooDapper", "FooGooDapper\FooGooDapper.csproj", "{EA8E68A4-089D-4049-8A16-9CE83089EBA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooGooBusiness.Test", "FooGooBusiness.Test\FooGooBusiness.Test.csproj", "{1D8135E8-7B20-4D50-A3A5-77F76BD906BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{EA8E68A4-089D-4049-8A16-9CE83089EBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA8E68A4-089D-4049-8A16-9CE83089EBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA8E68A4-089D-4049-8A16-9CE83089EBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8135E8-7B20-4D50-A3A5-77F76BD906BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8135E8-7B20-4D50-A3A5-77F76BD906BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8135E8-7B20-4D50-A3A5-77F76BD906BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8135E8-7B20-4D50-A3A5-77F76BD906BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

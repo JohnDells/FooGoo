@@ -18,8 +18,7 @@ Data Structure:
 	FooType:	This is a lookup parent to Foo and is intended to have a limited number of values.
 	Bar:		This is a child of "Foo", with a one to many relationship to it's parent.
 					Usually nothing is ever done to these records outside the context of it's parent foo.
-	Baz:		This is a sibling of "Foo", with a many to many relationship.
-	Goo:		This is a relationship between two Foos "nodes" - representing the "edge" in a graph implementation.
+	Baz:		This is a relationship between two Foos "nodes" - representing the "edge" in a graph implementation.	
 
 Philosophy and principals:
 	1.  You should be able to swap out repositories to point at different data sources.

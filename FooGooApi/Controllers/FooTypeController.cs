@@ -28,6 +28,13 @@ namespace FooGooApi.Controllers
             return await _manager.GetAllActiveFooTypes();
         }
 
+        [HttpGet]
+        [Route("api/footypes/{id}")]
+        public async Task<FooTypeDto> Get(Guid id)
+        {
+            return await _manager.GetFooType(id);
+        }
+
         [HttpPost]
         [Route("api/footypes")]
         public async Task Create([FromBody] FooTypeDto item)
@@ -48,6 +55,5 @@ namespace FooGooApi.Controllers
         {
             await _manager.DeleteFooType(id);
         }
-
     }
 }

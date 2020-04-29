@@ -32,6 +32,13 @@ namespace FooGooMongoDb
             return result;
         }
 
+        public async Task<FooTypeDto> GetFooType(Guid id)
+        {
+            var items = await _collection.Find<FooTypeDoc>(Builders<FooTypeDoc>.Filter.Eq((x) => x.FooTypeId, id) & Builders<FooTypeDoc>.Filter.Eq((x) => x.Active, true)).FirstOrDefaultAsync();
+            var result = _mapper.Map<FooTypeDto>(items);
+            return result;
+        }
+
         public async Task CreateFooType(FooTypeDto item)
         {
             var doc = _mapper.Map<FooTypeDoc>(item);

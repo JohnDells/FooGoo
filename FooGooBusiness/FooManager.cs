@@ -57,6 +57,11 @@ namespace FooGooBusiness
             return await _fooTypeRepository.GetAllActiveFooTypes();
         }
 
+        public async Task<FooTypeDto> GetFooType(Guid id)
+        {
+            return await _fooTypeRepository.GetFooType(id);
+        }
+
         public async Task CreateFooType(FooTypeDto item)
         {
             await _fooTypeRepository.CreateFooType(item);

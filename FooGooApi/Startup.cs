@@ -40,11 +40,11 @@ namespace FooGooApi
             //var connectionString = Configuration["ConnectionStrings:MongoDbDefault"];
             //builder.RegisterModule(new MongoDbApplicationModule(connectionString));
 
-            //var connectionString = Configuration["ConnectionStrings:EfDefault"];
-            //builder.RegisterModule(new EfApplicationModule(connectionString));
+            var connectionString = Configuration["ConnectionStrings:EfDefault"];
+            builder.RegisterModule(new EfApplicationModule(connectionString));
 
-            var connectionString = Configuration["ConnectionStrings:DapperDefault"];
-            builder.RegisterModule(new DapperApplicationModule(connectionString));
+            //var connectionString = Configuration["ConnectionStrings:DapperDefault"];
+            //builder.RegisterModule(new DapperApplicationModule(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

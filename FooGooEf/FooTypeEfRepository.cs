@@ -26,6 +26,13 @@ namespace FooGooEf
             return result;
         }
 
+        public async Task<FooTypeDto> GetFooType(Guid id)
+        {
+            var item = await _context.FooTypes.Where(x => x.FooTypeId == id && x.Active).FirstOrDefaultAsync();
+            var result = _mapper.Map<FooTypeDto>(item);
+            return result;
+        }
+
         public async Task CreateFooType(FooTypeDto item)
         {
             var entity = _mapper.Map<FooTypeEntity>(item);

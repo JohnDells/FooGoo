@@ -28,7 +28,7 @@ namespace FooGooEf
             base.Load(builder);
         }
 
-        private IMapper GetMapper()
+        public static IMapper GetMapper()
         {
             var config = new MapperConfiguration(cfg =>
             {

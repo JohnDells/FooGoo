@@ -8,6 +8,8 @@ namespace FooGooBusiness
     {
         Task<List<FooTypeDto>> GetAllActiveFooTypes();
 
+        Task<FooTypeDto> GetFooType(Guid id);
+
         Task CreateFooType(FooTypeDto item);
 
         Task UpdateFooTypeName(Guid id, string name);
