@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FooGooEf
 {
-    public class FooTypeEfRepository : DbContext, IFooTypeRepository
+    public class FooTypeEfRepository : IFooTypeRepository
     {
         private readonly IFooGooDbContext _context;
         private readonly IMapper _mapper;
@@ -52,7 +52,7 @@ namespace FooGooEf
 
         public async Task DeleteFooType(Guid id)
         {
-            var item = await _context.FooTypes.Where(x => x.FooTypeId == id).FirstOrDefaultAsync();
+            var item = await _context.FooTypes.Where(x => x.FooTypeId == id && x.Active).FirstOrDefaultAsync();
             if (item != null)
             {
                 item.Active = false;

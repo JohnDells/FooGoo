@@ -35,7 +35,7 @@ namespace FooGooEf
 
         public async Task<FooDto> GetFoo(Guid id)
         {
-            var item = await _context.Foos.Where(x => x.FooId == id).FirstOrDefaultAsync();
+            var item = await _context.Foos.Where(x => x.FooId == id && x.Active).FirstOrDefaultAsync();
             var result = _mapper.Map<FooDto>(item);
             return result;
         }
@@ -69,7 +69,7 @@ namespace FooGooEf
 
         public async Task DeleteFoo(Guid id)
         {
-            var item = await _context.Foos.Where(x => x.FooId == id).FirstOrDefaultAsync();
+            var item = await _context.Foos.Where(x => x.FooId == id && x.Active).FirstOrDefaultAsync();
             if (item != null)
             {
                 item.Active = false;

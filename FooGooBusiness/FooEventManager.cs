@@ -34,15 +34,15 @@ namespace FooGooBusiness
                     break;
                 case FooEventConstants.UpdateFooName:
                     var e5 = (FooUpdateNameEvent)item;
-                    await _manager.UpdateFooTypeName(e5.Id, e5.Name);
+                    await _manager.UpdateFooName(e5.Id, e5.Name);
                     break;
                 case FooEventConstants.UpdateFooFooTypeId:
                     var e6 = (FooUpdateFooTypeIdEvent)item;
                     await _manager.UpdateFooTypeId(e6.Id, e6.FooTypeId);
                     break;
                 case FooEventConstants.DeleteFoo:
-                    var e7 = (FooTypeDeleteEvent)item;
-                    await _manager.DeleteFooType(e7.Id);
+                    var e7 = (FooDeleteEvent)item;
+                    await _manager.DeleteFoo(e7.Id);
                     break;
                 case FooEventConstants.CreateBar:
                     var e8 = (BarCreateEvent)item;

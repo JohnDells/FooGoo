@@ -29,6 +29,10 @@ Philosophy and principals:
 	5.  Predictable failure should always happen gracefully.
 		a.  500 response at the controller level is reserved for unexpected stuff.
 		b.  Duplicate checks are considered predictable.
+	6.  Creates always add an item as "active".
+	7.  Deletes always check to see if an item is "active" - saves not necessary if they aren't.
+	8.  There is no "update fooId" for bar.  In contexts such as this, we don't allow moving bars from one foo to another.
+	9.  There is no "getBarById" method.  In contexts like this, we should have no reason to get a single bar.
 
 
 

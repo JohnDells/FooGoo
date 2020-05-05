@@ -45,7 +45,7 @@ namespace FooGooEf
 
         public async Task DeleteBar(Guid id)
         {
-            var item = await _context.Bars.Where(x => x.BarId == id).FirstOrDefaultAsync();
+            var item = await _context.Bars.Where(x => x.BarId == id && x.Active).FirstOrDefaultAsync();
             if (item != null)
             {
                 item.Active = false;
