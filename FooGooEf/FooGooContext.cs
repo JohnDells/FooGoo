@@ -15,6 +15,8 @@ namespace FooGooEf
         {
         }
 
+        public DbSet<FooGooEventEntity> FooGooEvents { get; set; }
+        public DbSet<FooGooSnapshotEntity> FooGooSnapshots { get; set; }
         public DbSet<FooTypeEntity> FooTypes { get; set; }
         public DbSet<FooEntity> Foos { get; set; }
         public DbSet<BarEntity> Bars { get; set; }

@@ -1,0 +1,29 @@
+﻿USE [FooGoo]
+GO
+
+CREATE TABLE [dbo].[FooGooEvent]
+(
+	[SequenceId] BIGINT IDENTITY(1, 1),
+	[Type] VARCHAR(200) NOT NULL,
+	[Value] NVARCHAR(max) NOT NULL,
+	[CorrelationId] UNIQUEIDENTIFIER NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[CreatedBy] UNIQUEIDENTIFIER NULL,
+	CONSTRAINT [PK_FooGooEvent_SequenceId] PRIMARY KEY CLUSTERED ([SequenceId]),
+	CONSTRAINT [cst_FooGooEvent_IsJson] CHECK (ISJSON([Value])=1)
+)
+GO
+
+CREATE TABLE [dbo].[FooGooSnapshot]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL,
+	[CurrentSequenceId] BIGINT NOT NULL,
+	[SnapshotType] INT NOT NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[CreatedBy] UNIQUEIDENTIFIER NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[ModifiedBy] UNIQUEIDENTIFIER NULL,
+	CONSTRAINT [PK_FooGooSnapshot_Id] PRIMARY KEY CLUSTERED ([Id])
+)
+GO
+

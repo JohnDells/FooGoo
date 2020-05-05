@@ -38,6 +38,8 @@ namespace FooGooEf
                 cfg.CreateMap<FooTypeDto, FooTypeEntity>();
                 cfg.CreateMap<BarEntity, BarDto>();
                 cfg.CreateMap<BarDto, BarEntity>();
+                cfg.CreateMap<FooGooEventDto, FooGooEventEntity>();
+                cfg.CreateMap<FooGooEventEntity, FooGooEventDto>();
             });
 
             var mapper = config.CreateMapper();

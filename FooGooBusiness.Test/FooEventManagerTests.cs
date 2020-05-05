@@ -11,8 +11,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Create_FooType()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var item = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(item);
@@ -25,8 +25,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Update_FooType_Name()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var item = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(item);
@@ -41,8 +41,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Delete_FooType()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var item = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(item);
@@ -57,8 +57,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Create_Foo()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
@@ -74,8 +74,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Update_Foo_Name()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
@@ -92,8 +92,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Update_Foo_FooTypeId()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType1 = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType1);
@@ -112,8 +112,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Delete_Foo()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
@@ -130,8 +130,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Create_Bar()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
@@ -150,8 +150,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Update_Bar_Name()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
@@ -171,8 +171,8 @@ namespace FooGooBusiness.Test
         public async Task Manager_Should_Delete_Bar()
         {
             var context = FooGooTestHelpers.GetDummyContext();
-            var fooManager = FooManagerTests.GetFooManager(context);
-            var fooEventManager = new FooEventManager(fooManager);
+            var fooManager = FooGooTestHelpers.GetFooManager(context);
+            var fooEventManager = FooGooTestHelpers.GetFooEventManager(context, fooManager);
 
             var fooType = new FooTypeCreateEvent { Id = Guid.NewGuid(), Name = Guid.NewGuid().ToString() };
             await fooEventManager.ProcessFooEventAsync(fooType);
