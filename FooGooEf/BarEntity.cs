@@ -1,13 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FooGooEf
 {
-    [Table("Bars")]
     public class BarEntity
     {
-        [Key]
         public Guid BarId { get; set; }
 
         public Guid FooId { get; set; }

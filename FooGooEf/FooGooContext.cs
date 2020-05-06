@@ -28,5 +28,17 @@ namespace FooGooEf
                 optionsBuilder.UseSqlServer(_connectionString);
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new FooGooSnapshotEntityTypeConfiguration());
+            builder.ApplyConfiguration(new FooGooEventEntityTypeConfiguration());
+            builder.ApplyConfiguration(new FooTypeEntityTypeConfiguration());
+            builder.ApplyConfiguration(new FooEntityTypeConfiguration());
+            builder.ApplyConfiguration(new BarEntityTypeConfiguration());
+
+        }
     }
 }

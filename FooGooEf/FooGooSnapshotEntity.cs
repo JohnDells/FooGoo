@@ -12,7 +12,7 @@ namespace FooGooEf
 
         public long CurrentSequenceId { get; set; }
 
-        public int SnapshotType { get; set; }
+        public SnapshotType SnapshotType { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
