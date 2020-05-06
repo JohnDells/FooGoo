@@ -23,19 +23,21 @@ namespace FooGooApi.Controllers
 
         [HttpPost]
         [Route("api/foogooevents")]
-        public async Task Add(FooGooEventsDto items)
+        public async Task<IActionResult> Add(FooGooEventsDto items)
         {
             //  TODO:  Replace with identity.
             var userId = Guid.NewGuid();
             await _manager.AddEvents(items, userId);
+            return Ok();
         }
 
         [HttpPost]
         [Route("api/foogooevents/process")]
-        public async Task Process()
+        public async Task<IActionResult> Process()
         {
             var userId = Guid.NewGuid();
             await _manager.Process(userId);
+            return Ok();
         }
 
     }

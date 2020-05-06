@@ -23,30 +23,34 @@ namespace FooGooApi.Controllers
 
         [HttpGet]
         [Route("api/foos/{fooId}/bars")]
-        public async Task<IEnumerable<BarDto>> GetAll(Guid fooId)
+        public async Task<IActionResult> GetAll(Guid fooId)
         {
-            return await _manager.GetAllActiveBarsByFooId(fooId);
+            var result = await _manager.GetAllActiveBarsByFooId(fooId);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("api/foos/{fooId}/bars")]
-        public async Task Create([FromBody] BarDto item)
+        public async Task<IActionResult> Create([FromBody] BarDto item)
         {
             await _manager.CreateBar(item);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/foos/{fooId}/bars/{id}/name/{name}")]
-        public async Task UpdateName(Guid id, string name)
+        public async Task<IActionResult> UpdateName(Guid id, string name)
         {
             await _manager.UpdateBarName(id, name);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/foos/{fooId}/bars/{id}/deactivate")]
-        public async Task Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             await _manager.DeleteBar(id);
+            return Ok();
         }
     }
 }

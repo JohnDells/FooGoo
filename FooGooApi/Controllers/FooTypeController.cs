@@ -23,37 +23,42 @@ namespace FooGooApi.Controllers
 
         [HttpGet]
         [Route("api/footypes")]
-        public async Task<IEnumerable<FooTypeDto>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return await _manager.GetAllActiveFooTypes();
+            var result = await _manager.GetAllActiveFooTypes();
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("api/footypes/{id}")]
-        public async Task<FooTypeDto> Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return await _manager.GetFooType(id);
+            var result = await _manager.GetFooType(id);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("api/footypes")]
-        public async Task Create([FromBody] FooTypeDto item)
+        public async Task<IActionResult> Create([FromBody] FooTypeDto item)
         {
             await _manager.CreateFooType(item);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/footypes/{id}/name/{name}")]
-        public async Task UpdateName(Guid id, string name)
+        public async Task<IActionResult> UpdateName(Guid id, string name)
         {
             await _manager.UpdateFooTypeName(id, name);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/footypes/{id}/deactivate")]
-        public async Task Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             await _manager.DeleteFooType(id);
+            return Ok();
         }
     }
 }

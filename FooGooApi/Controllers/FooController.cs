@@ -22,51 +22,58 @@ namespace FooGooApi.Controllers
 
         [HttpGet]
         [Route("api/foos")]
-        public async Task<IEnumerable<FooDto>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return await _manager.GetAllActiveFoos();
+            var result = await _manager.GetAllActiveFoos();
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("api/foos/fooTypeId/{fooTypeId}")]
-        public async Task<List<FooDto>> GetActiveByType(Guid fooTypeId)
+        public async Task<IActionResult> GetActiveByType(Guid fooTypeId)
         {
-            return await _manager.GetAllActiveFoosByType(fooTypeId);
+            var result = await _manager.GetAllActiveFoosByType(fooTypeId);
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("api/foos/{id}")]
-        public async Task<FooDto> Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return await _manager.GetFoo(id);
+            var result = await _manager.GetFoo(id);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("api/foos")]
-        public async Task Create([FromBody] FooDto item)
+        public async Task<IActionResult> Create([FromBody] FooDto item)
         {
             await _manager.CreateFoo(item);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/foos/{id}/name/{name}")]
-        public async Task UpdateName(Guid id, string name)
+        public async Task<IActionResult> UpdateName(Guid id, string name)
         {
             await _manager.UpdateFooName(id, name);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/foos/{id}/fooTypeId/{fooTypeId}")]
-        public async Task UpdateFooTypeId(Guid id, Guid fooTypeId)
+        public async Task<IActionResult> UpdateFooTypeId(Guid id, Guid fooTypeId)
         {
             await _manager.UpdateFooTypeId(id, fooTypeId);
+            return Ok();
         }
 
         [HttpPut]
         [Route("api/foos/{id}/deactivate")]
-        public async Task Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             await _manager.DeleteFoo(id);
+            return Ok();
         }
     }
 }
