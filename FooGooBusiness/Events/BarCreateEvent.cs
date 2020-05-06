@@ -4,7 +4,7 @@ namespace FooGooBusiness.Events
 {
     public class BarCreateEvent : IFooGooEvent
     {
-        public string Type => FooEventConstants.CreateBar;
+        public string EventType => FooEventConstants.CreateBar;
 
         public Guid Id { get; set; }
 

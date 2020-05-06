@@ -18,13 +18,18 @@ namespace FooGooBusiness
             _serializer = serializer;
         }
 
-        public async Task AddEvents(List<IFooGooEvent> events, Guid createdBy, Guid? correlationId = null)
+        public async Task AddEvents(FooGooEventsDto items, Guid userId)
         {
-            var temp = Map(events, createdBy, correlationId);
+            await AddEvents(items.SubEvents, userId, items.CorrelationId);
+        }
+
+        public async Task AddEvents(List<IFooGooEvent> events, Guid userId, Guid? correlationId = null)
+        {
+            var temp = Map(events, userId, correlationId);
             await _repository.AddFooGooEvents(temp);
         }
 
-        private List<FooGooEventDto> Map(List<IFooGooEvent> events, Guid createdBy, Guid? correlationId = null)
+        private List<FooGooEventDto> Map(List<IFooGooEvent> events, Guid userId, Guid? correlationId = null)
         {
             var result = new List<FooGooEventDto>();
 
@@ -35,9 +40,9 @@ namespace FooGooBusiness
                 var item = new FooGooEventDto
                 {
                     CorrelationId = correlationId,
-                    Type = subEvent.Type,
+                    Type = subEvent.EventType,
                     CreatedDate = now,
-                    CreatedBy = createdBy,
+                    CreatedBy = userId,
                     Value = value
                 };
                 result.Add(item);
@@ -64,7 +69,7 @@ namespace FooGooBusiness
 
         public async Task ProcessFooEventAsync(IFooGooEvent item)
         {
-            switch (item.Type)
+            switch (item.EventType)
             {
                 case FooEventConstants.CreateFooType:
                     var e1 = (FooTypeCreateEvent)item;

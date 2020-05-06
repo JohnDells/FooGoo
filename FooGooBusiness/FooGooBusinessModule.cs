@@ -8,6 +8,7 @@ namespace FooGooBusiness
         {
             builder.RegisterType<FooManager>().As<IFooManager>();
             builder.RegisterType<FooEventManager>().As<IFooEventManager>();
+            builder.RegisterType<FooEventJsonSerializationStrategy>().As<IFooEventSerializationStrategy>();
 
             base.Load(builder);
         }

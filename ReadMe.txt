@@ -13,7 +13,12 @@ TODO:
 5.  Implement validation  (passive [string length, non-null guids] and active [duplicate name])
 6.  EfRepo - extract table typeConfiguration
 
+OTHER:
 
+1.  Kafka?
+2.  GraphQL?
+3.  Serilog?
+4.  Blob Storage?
 
 SPECIFICS:
 

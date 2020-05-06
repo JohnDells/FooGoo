@@ -4,7 +4,7 @@ namespace FooGooBusiness
 {
     public interface IFooGooEvent
     {
-        public string Type { get; }
+        public string EventType { get; }
 
         public Guid Id { get; }
     }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
+using System.Text.Json;
 
 namespace FooGooApi
 {
@@ -25,7 +26,8 @@ namespace FooGooApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //  NOTE:  We "revert" to Newtonsoft because the Microsoft Json implementation is lacking.
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddSwaggerGen(c =>
             {

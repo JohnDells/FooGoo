@@ -24,6 +24,7 @@ namespace FooGooEf
             builder.Register(c => new FooTypeEfRepository(context, mapper)).As<IFooTypeRepository>();
             builder.Register(c => new FooEfRepository(context, mapper)).As<IFooRespository>();
             builder.Register(c => new BarEfRepository(context, mapper)).As<IBarRepository>();
+            builder.Register(c => new FooGooEventEfRepository(context, mapper)).As<IFooGooEventRepository>();
 
             base.Load(builder);
         }
