@@ -20,6 +20,7 @@ namespace FooGooDapper
             builder.Register(c => new FooTypeDapperRespository(_connectionString, mapper)).As<IFooTypeRepository>();
             builder.Register(c => new FooDapperRepository(_connectionString, mapper)).As<IFooRespository>();
             builder.Register(c => new BarDapperRepository(_connectionString, mapper)).As<IBarRepository>();
+            builder.Register(c => new FooGooEventDapperRepository(_connectionString, mapper)).As<IFooGooEventRepository>();
 
             base.Load(builder);
         }
@@ -34,6 +35,8 @@ namespace FooGooDapper
                 cfg.CreateMap<FooTypeDto, FooTypeRec>();
                 cfg.CreateMap<BarRec, BarDto>();
                 cfg.CreateMap<BarDto, BarRec>();
+                cfg.CreateMap<FooGooEventRec, FooGooEventDto>();
+                cfg.CreateMap<FooGooEventDto, FooGooEventRec>();
             });
 
             var mapper = config.CreateMapper();
